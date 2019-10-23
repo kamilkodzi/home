@@ -18,7 +18,7 @@ return(
                return(
                    <div key={id}>
                        <a href={url}>{title}</a>
-                       <div>{by} - {new Date(time).toLocaleTimeString()}</div>
+                       <div>{by} - {new Date(time*1000).toLocaleString()}</div>
                    </div>
                ) 
             })
