@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import Joke from './Joke';
 
 function App() {
   const[userQuery,setUserQuery]=useState('');
@@ -25,6 +26,8 @@ const searchQuery=()=>{
         <input value={userQuery} onChange={updateUserQuery} onKeyPress={handleKeyPress}/>
         <button onClick={searchQuery} >Search</button>
       </div>
+      <hr/>
+      <Joke/>
     </div>
   );
 }
