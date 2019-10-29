@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import Joke from './Joke';
 import Stories from './Stories';
-
+import Tasks from './Tasks';
 function App(){
   const[userQuery,setUserQuery]=useState('');
 
@@ -29,6 +29,8 @@ const searchQuery=()=>{
       </div>
       <hr/>
       <Joke/>
+      <hr/>
+      <Tasks/>
       <hr/>
       <Stories/>
     </div>
