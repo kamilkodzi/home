@@ -2,6 +2,8 @@ import React,{useState} from 'react';
 import Joke from './Joke';
 import Stories from './Stories';
 import Tasks from './Tasks';
+import Gallery from './Gallery';
+
 function App(){
   const[userQuery,setUserQuery]=useState('');
 
@@ -31,6 +33,8 @@ const searchQuery=()=>{
       <Joke/>
       <hr/>
       <Tasks/>
+      <hr/>
+      <Gallery/>
       <hr/>
       <Stories/>
     </div>
