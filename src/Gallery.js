@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react';
 import PICTURES from './data/pictures';
 
 const SECONDS = 1000;
+const minimumDelay= 1*SECONDS;
+const minimumIncrement=1;
 
 function Gallery(){
     const[index,setIndex]=useState(0);
@@ -9,19 +11,30 @@ function Gallery(){
     const[increment,setIncrement]=useState(1);
 
     useEffect(()=>{
+        console.log('delay',delay,'increment',increment)
         const interval=setInterval(()=>{
-           setIndex(something=>{
-                return (something+1)%PICTURES.length;
+           setIndex(storedIndex=>{
+                return (storedIndex+increment)%PICTURES.length;
             })
         },delay);
 
-        return ()=>{clearInterval(interval)};
-    },[])
+        return ()=>{
+            console.log('remove last interval');
+            clearInterval(interval);
+        };
+    },[delay,increment])
 
 const updateDelay=event=>{
-    setDelay(Number(event.target.value) * SECONDS);
+    const delay=Number(event.target.value) * SECONDS;
+
+    setDelay(delay < minimumDelay ? minimumDelay : delay);
 }
 
+const updateIncrement= event =>{
+const increment = Number(event.target.value);
+
+setIncrement(increment<minimumIncrement?minimumIncrement:increment);
+}
 
     return(
         <div className="Gallery">
@@ -33,6 +46,10 @@ const updateDelay=event=>{
                 <div>
                     Gallery transition delay (seconds):
                     <input type="numbers" onChange={updateDelay}/>
+                </div>
+                <div>
+                    Gallery increment:
+                    <input type='number' onChange={updateIncrement} />
                 </div>
             </div>
         </div>
